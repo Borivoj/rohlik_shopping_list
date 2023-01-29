@@ -1,0 +1,50 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<div class="container">
+  <h1 class="my-4">Cooking with ChatGPT!</h1>
+  
+
+  <form action="/" method="POST">
+    <div class="form-row">
+      <div class="col-sm-10 my-1">
+        <label for="newStuff" class="sr-only">New Stuff:</label>
+        <input type="text" class="form-control" name="thing_to_be_cooked" id="newStuff" placeholder="What do you want to cook?">
+      </div>
+      <div class="col-sm-2 my-1">
+        <button type="submit" class="btn btn-primary btn-block">Gimme shopping list!</button>
+      </div>
+    </div>
+  </form>
+  
+  {% if 2 < 1 %}
+  <p>There is nothing to buy for now.</p>
+  {% else %}
+  <br>
+  <p class="solid">{{ instructions }}</p>
+  <br>
+  <table class="table">
+    <thead>
+      <tr>
+        <th>Ingridient</th>
+        <th>Product</th>
+        <th>Amount</th>
+        <th>Price</th>
+        <th></th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for index, grocery in groceries.iterrows() %}
+      <tr>
+        <td><a href="">{{ grocery['ingridient'] }}</a></td>
+        <td><a href="">{{ grocery['product_name'] }}</a></td>
+        <td><a href="">{{ grocery['textual_amount'] }}</a></td>
+        <td><a href="">{{ grocery['price'] }}</a></td>
+        <td class="text-right"><a class="btn btn-success" href={{ grocery['rohlik_link'] }} role="button" target="_blank">Add on Rohlik.cz</a></td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  {% endif %}
+</div>
+{% endblock content %}
